@@ -1,0 +1,37 @@
+import random
+
+low = 1
+high = 100
+guesses = 0
+options = ('h','l')
+
+print('\nChoose a number between (1 to 100) and the AI will guess the number\n')
+
+while True:
+	user = input('Enter your guess: ')
+	if user.isdigit():
+		user = int(user)
+		if user < 101:
+			break
+		else:
+			print('Enter a num <= 100')
+	else:
+		print('Enter an integer')
+		continue
+	
+while True:
+	ai = random.randint(low,high)
+	guesses += 1
+	print('AI guess is: ',ai)
+
+	if ai == user:
+		print(f'AI took {guesses} guesses')
+		break
+	else:
+		ask = input('is the guess high or low?: ').lower()
+		if ask == 'h':
+			high = ai
+			print('--------')
+		else:
+			low = ai
+			print('--------')
